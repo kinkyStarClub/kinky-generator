@@ -3,5 +3,7 @@
 {% block pageTitle %}{% endblock %}
 
 {% block content %}
+<div class="row">
 
+</div>
 {% endblock %}
