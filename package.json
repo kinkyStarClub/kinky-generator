@@ -18,7 +18,8 @@
   },
   "files": [
     "app",
-    "makeUrl"
+    "makeUrl",
+    "makeDay"
   ],
   "keywords": [
     "yeoman-generator"
