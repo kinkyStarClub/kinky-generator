@@ -20,7 +20,7 @@ var KinkyGenerator = yeoman.generators.NamedBase.extend({
   		}else{
   			this.urls = this.name.split('|');
 
-  			var msg = 'Started to create the url';
+  			var msg = 'Start to create the url';
 
   			if(this.urls.length > 1){ msg += 's'; }
 
