@@ -22,6 +22,8 @@ var KinkyGenerator = yeoman.generators.Base.extend({
     console.log(chalk.bold('addfiles: ') + 'Adds new files to upload list.');
     console.log(chalk.bold('addchange "English message": ') + 'Adds a message to the upload');
     console.log(chalk.bold('upload: ') + 'Upload the changed files with the message to the live site.');
+    console.log(chalk.bold('finishsetup: ') + 'Lets you set your username and email to upload the changes.');
+    console.log(chalk.bold('updatesetup: ') + 'Gets and installs updates for the box.');
   }
 });
 
