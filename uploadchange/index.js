@@ -6,7 +6,6 @@ var shell = require('shelljs');
 
 
 var KinkyGenerator = yeoman.generators.NamedBase.extend({
-  message: '',
   hasError: false,
 
   initializing: function () {
@@ -15,36 +14,30 @@ var KinkyGenerator = yeoman.generators.NamedBase.extend({
         ));
   },
 
-  prompting: function(){
-    var done = this.async();
-    this.prompt({
-      type    : 'input',
-      name    : 'message',
-      message : 'Short description of the changes',
-      default : ''
-    }, function (answers) {
-      this.message = answers.message;
-      done();
-    }.bind(this));
-  },
-
   writing: function () {
     shell.cd('~/workspace/kinkyStarClub.github.io');
 
-    if (shell.exec('preparechange').code !== 0) {
-      console.log('Error: Preparing the changes failed');
+    if (shell.exec('~/workspace/kinkyStarClub.github.io/node_modules/.bin/grunt').code !== 0) {
+      console.log('Error: Transforming files failed');
       this.hasError = true;
     }
 
     if(!this.hasError){
-      if (shell.exec('addchange "' + this.message + '"').code !== 0) {
+      if (shell.exec('git add .').code !== 0) {
         console.log('Error: adding message changed');
         this.hasError = true;
       }
     }
 
     if(!this.hasError){
-      if (shell.exec('upload').code !== 0) {
+      if (shell.exec('git commit -am "' + this.name + '"').code !== 0) {
+        console.log('Error: adding message changed');
+        this.hasError = true;
+      }
+    }
+
+    if(!this.hasError){
+      if (shell.exec('git push').code !== 0) {
         console.log('Error: upload failed');
         this.hasError = true;
       }
