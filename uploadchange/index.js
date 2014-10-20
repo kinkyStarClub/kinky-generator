@@ -49,7 +49,7 @@ var KinkyGenerator = yeoman.generators.NamedBase.extend({
         this.hasError = true;
       }
     }
-  }
+  },
 
   end: function() {
     if(this.hasError){ return; }
