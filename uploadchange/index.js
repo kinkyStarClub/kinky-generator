@@ -31,20 +31,20 @@ var KinkyGenerator = yeoman.generators.NamedBase.extend({
   writing: function () {
     shell.cd('~/workspace/kinkyStarClub.github.io');
 
-    if (exec('preparechange').code !== 0) {
+    if (shell.exec('preparechange').code !== 0) {
       console.log('Error: Preparing the changes failed');
       this.hasError = true;
     }
 
     if(!this.hasError){
-      if (exec('addchange "' + this.message + '"').code !== 0) {
+      if (shell.exec('addchange "' + this.message + '"').code !== 0) {
         console.log('Error: adding message changed');
         this.hasError = true;
       }
     }
 
     if(!this.hasError){
-      if (exec('upload').code !== 0) {
+      if (shell.exec('upload').code !== 0) {
         console.log('Error: upload failed');
         this.hasError = true;
       }
